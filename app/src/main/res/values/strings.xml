@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">חדשישן+</string>
+    <string name="introTitle"><font color="#5b4cbd">Your shoping </font>Destination \nfor Everything</string>
+    <string name="introSubtitle">Get personalized recommendation\n Enjoy fast, free shipping</string>
+    <string name="getStarted">Enter As A Guest</string>
+    <string name="signin">Already have an account?<font color="#5b4cbd"> Sign In</font></string>
+    <string name="search_anything">Search anything</string>
+    <string name="click_here_to_call_us">Click <font color="#DD2C00">Here</font> To Call Us</string>
+</resources>
