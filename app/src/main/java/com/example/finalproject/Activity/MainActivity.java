@@ -21,6 +21,7 @@ import com.example.finalproject.Domain.CategoryDomain;
 import com.example.finalproject.Domain.ItemsDomain;
 import com.example.finalproject.Domain.SliderItems;
 import com.example.finalproject.Interfaces.OnCategoryClickListener;
+import com.example.finalproject.R;
 import com.example.finalproject.Utilities.SoundPlayer;
 import com.example.finalproject.databinding.ActivityMainBinding;
 import com.example.finalproject.databinding.ActivityProfileBinding;
@@ -40,6 +41,7 @@ public class MainActivity extends BaseActivity {
     private PopularAdapter popularAdapter;
     private ArrayList<ItemsDomain> items = new ArrayList<>();
     private ArrayList<ItemsDomain> filteredItems = new ArrayList<>();
+    SoundPlayer soundPlayer = SoundPlayer.getInstance(this);
 
 
     @Override
@@ -88,17 +90,22 @@ public class MainActivity extends BaseActivity {
 
 
 
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        SoundPlayer soundPlayer = SoundPlayer.getInstance(this);
-//        if (soundPlayer != null) {
-//            soundPlayer.stopSound();
-//        }
-//        SharedPreferences.Editor editor = getSharedPreferences("sound_prefs", MODE_PRIVATE).edit();
-//        editor.putBoolean("sound_enabled", false);
-//        editor.apply();
-//    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (soundPlayer != null) {
+            soundPlayer.stopSound();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences prefs = getSharedPreferences("sound_prefs", MODE_PRIVATE);
+        boolean isSoundEnabled = prefs.getBoolean("sound_enabled", false);
+        if(isSoundEnabled)
+            soundPlayer.playSound(R.raw.backgroundmusic);
+    }
 
     private void bottomNavigation() {
         binding.cartBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CartActivity.class)));

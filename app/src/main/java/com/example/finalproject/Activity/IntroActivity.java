@@ -40,78 +40,16 @@ public class IntroActivity extends BaseActivity {
             if (user != null) {
                 signOut();
             }
-            //loadGeustData();
             startActivity(new Intent(this, MainActivity.class));
         });
 
         binding.singInTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //saveGeustData();
                 startActivity(new Intent(IntroActivity.this, SignInActivity.class));
             }
         });
     }
-
-//    private void saveGeustData() {
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("geust");
-//
-//        ArrayList<ItemsDomain> cartDetails = managmentCartAndWish.getListCart("CartList");
-//        ArrayList<ItemsDomain> wishListDetails = managmentCartAndWish.getListCart("WishList");
-//
-//        HashMap<String, Object> userData = new HashMap<>();
-//        userData.put("cart", cartDetails);
-//        userData.put("wishList", wishListDetails);
-//
-//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                myRef.updateChildren(userData);
-//
-//                managmentCartAndWish.deleteArray(managmentCartAndWish.getListCart("CartList"), "CartList");
-//                managmentCartAndWish.deleteArray(managmentCartAndWish.getListCart("WishList"), "WishList");
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
-
-
-//    private void loadGeustData() {
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("geust");
-//
-//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                DataSnapshot cartSnapshot = snapshot.child("cart");
-//                DataSnapshot wishListSnapshot = snapshot.child("wishList");
-//
-//                for (DataSnapshot dataSnapshot : cartSnapshot.getChildren()) {
-//                    ItemsDomain item = dataSnapshot.getValue(ItemsDomain.class);
-//                    if (item != null) {
-//                        managmentCartAndWish.insertItem(item, "CartList");
-//                    }
-//                }
-//
-//                for (DataSnapshot dataSnapshot : wishListSnapshot.getChildren()) {
-//                    ItemsDomain item = dataSnapshot.getValue(ItemsDomain.class);
-//                    if (item != null) {
-//                        managmentCartAndWish.insertItem(item, "WishList");
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 
     public void signOut() {
         AuthUI.getInstance()

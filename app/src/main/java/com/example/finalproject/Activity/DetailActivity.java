@@ -46,8 +46,13 @@ public class DetailActivity extends BaseActivity {
         list.add("#0c3c72");
         list.add("#829db5");
 
-        binding.recyclerColor.setAdapter(new ColorAdapter(list));
-        binding.recyclerColor.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        if(object.getBrand().equals("Clothing")) {
+            binding.recyclerColor.setAdapter(new ColorAdapter(list));
+            binding.recyclerColor.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        }else{
+            binding.selectColor.setVisibility(View.GONE);
+            binding.recyclerColor.setVisibility(View.GONE);
+        }
     }
 
     private void initSize() {
@@ -57,8 +62,13 @@ public class DetailActivity extends BaseActivity {
         list.add("L");
         list.add("XL");
         list.add("XXL");
-        binding.recyclerSize.setAdapter(new SizeAdapter(list));
-        binding.recyclerSize.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        if(object.getBrand().equals("Clothing")) {
+            binding.recyclerSize.setAdapter(new SizeAdapter(list));
+            binding.recyclerSize.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        }else{
+            binding.selectSize.setVisibility(View.GONE);
+            binding.recyclerSize.setVisibility(View.GONE);
+        }
     }
 
     private void initBanners() {
